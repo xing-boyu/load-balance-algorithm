@@ -13,7 +13,7 @@ func SmoothRoundRobinAlg_Next(t *testing.T) {
 	smoothRoundRobinAlg.Add("C", 3)
 
 	for i:=0; i<10; i++ {
-    	fmt.Printf("%s ", roundRobinAlg.Next())
+    	fmt.Printf("%s ", smoothRoundRobinAlg.Next())
     }
 }
 ```
