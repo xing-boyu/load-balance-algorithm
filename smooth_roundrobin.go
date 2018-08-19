@@ -36,19 +36,19 @@ a  b  c
 7  0  0  (a selected)
 0  0  0*/
 
-type weightEntry struct {
+type smoothWeightEntry struct {
 	item 	interface{}
 	weight 			int
 	currentWeight 	int
 }
 
 type SmoothRoundRobinAlg struct {
-	items []*weightEntry
+	items []*smoothWeightEntry
 	n		int
 }
 
 func (sRRA *SmoothRoundRobinAlg)Add(item interface{}, weight int) {
-	weightEntryItem := &weightEntry{item:item, weight:weight,currentWeight:0}
+	weightEntryItem := &smoothWeightEntry{item:item, weight:weight,currentWeight:0}
 	sRRA.items = append(sRRA.items, weightEntryItem)
 	sRRA.n++
 }
@@ -73,7 +73,7 @@ func (sRRA *SmoothRoundRobinAlg)Remove(item interface{}) {
 	}
 }
 
-func smoothRoundRobinAlg(items []*weightEntry)(bestItem *weightEntry) {
+func smoothRoundRobinAlg(items []*smoothWeightEntry)(bestItem *smoothWeightEntry) {
 	if items==nil || len(items) == 0 {
 		return nil
 	}
